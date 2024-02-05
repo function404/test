@@ -1,13 +1,6 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-    // Container 
-    container:{
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        width: '100%',
-    },
-
     // Header
     Header:{
         width: '100%',  
@@ -24,8 +17,8 @@ const styles = StyleSheet.create({
     },
     title:{
         width: '95%',
-        margin: 10,
-        fontSize: 20,
+        marginTop: 10,
+        fontSize: 22,
         fontWeight: '400',
         fontFamily: 'Roboto, sans-serif',
     },
@@ -41,13 +34,14 @@ const styles = StyleSheet.create({
         borderColor: "#000",
         borderRadius: 5,
     },
-
+    
     // Container Posts
-    containerPosts:{
-        width: '95%',
-        padding: 10,
-        margin: 10,
+    container:{
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        width: '100%',
     },
+
     containerPosts:{
         width: '95%',
         padding: 10,
@@ -92,6 +86,7 @@ const styles = StyleSheet.create({
         textAlign: 'justify',
         textTransform: '',
     },
+
     // Delete Button Post
     contentBtn:{
         width: '100%',
@@ -155,6 +150,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Roboto, sans-serif',
         color: '#414141',
     },
+
     // Footer 
     Footer:{
         width: '100%',
