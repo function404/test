@@ -14,29 +14,34 @@ function RenderPosts() {
     const [newComment, setNewComment] = useState("");
     const [expandedComments, setExpandedComments] = useState([]);
 
+    // Função para obter posts da API
     const apiPosts = async () => {
         const response = await fetch('https://jsonplaceholder.typicode.com/posts');
         const data = await response.json();
         setPosts(data);
     }
 
+    // Função para obter comentários da API
     const apiComments = async () => {
         const response = await fetch('https://jsonplaceholder.typicode.com/comments');
         const data = await response.json();
         setComments(data);
     }
 
+    // Função para obter usuários da API
     const apiUsers = async () => {
         const response = await fetch('https://jsonplaceholder.typicode.com/users');
         const data = await response.json();
         setUsers(data);
     }
 
+    // Retorna o nome de usuário correspondente ao ID
     const getUsers = (id) => {
         const user = users.find(user => user.id === id);
         return (user ? user.username : '');
     }
 
+    // Retorna os comentários associados a um post, com opção de expandido ou apenas o primeiro comentário
     const getPostComments = (postId) => {
         const allComments = comments.filter(comment => comment.postId === postId);
         return expandedComments.includes(postId) ? allComments : allComments.slice(0, 1);
@@ -60,6 +65,7 @@ function RenderPosts() {
         setPosts([...posts, data]);
     }
 
+     // Deleta um post da lista
     const handleDeletePost = async (postId) => {
         await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`, {
         method: 'DELETE',
@@ -86,6 +92,7 @@ function RenderPosts() {
         setNewComment("");
     }
 
+    // Alterna entre expandido e contraído o conjunto de comentários associados a um post
     const toggleComments = (postId) => {
         setExpandedComments((prevExpandedComments) => {
             if (prevExpandedComments.includes(postId)) {
@@ -96,12 +103,14 @@ function RenderPosts() {
         });
     }
 
+    // Executa as funções apiPosts(), apiComments(), e apiUsers() uma vez quando o componente é montado
     useEffect(() => {
         apiPosts();
         apiComments();
         apiUsers();
     }, []);
 
+    // Renderiza o restante do componente
     return (
         <>
             <FlatList
