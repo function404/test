@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Text, View, FlatList, Image } from "react-native";
+import React, { useState, useEffect, useRef } from "react";
+import { Text, View, FlatList, Image, TouchableOpacity } from "react-native";
 import { Button } from "react-native-paper";
+
+import { FaLongArrowAltUp } from "react-icons/fa";
 
 import Header from "./Header";
 import Footer from "./Footer";
@@ -13,6 +15,8 @@ function RenderPosts() {
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState("");
     const [expandedComments, setExpandedComments] = useState([]);
+
+    const flatListRef = useRef(null);
 
     // Função para obter posts da API
     const apiPosts = async () => {
@@ -91,7 +95,7 @@ function RenderPosts() {
         setComments([...comments, data]);
         setNewComment("");
     }
-
+    
     // Alterna entre expandido e contraído o conjunto de comentários associados a um post
     const toggleComments = (postId) => {
         setExpandedComments((prevExpandedComments) => {
@@ -102,25 +106,32 @@ function RenderPosts() {
             }
         });
     }
-
+    
     // Executa as funções apiPosts(), apiComments(), e apiUsers() uma vez quando o componente é montado
     useEffect(() => {
         apiPosts();
         apiComments();
         apiUsers();
     }, []);
-
+    
+    const scrollToTop = () => {
+        flatListRef.current.scrollToOffset({ offset: 0, animated: true });
+    }
+    
     // Renderiza o restante do componente
     return (
-        <>
+        <View style={styles.container}>
             <FlatList
+            ref={flatListRef}
                 data={posts}
                 keyExtractor={item => item.id.toString()}
                 // Container Header
                 ListHeaderComponent={() => (
                     <View style={styles.container}>
                         <Header />
-                        <Text style={styles.title}>Posts</Text>
+                        <View style={styles.contentTitle}>
+                            <Text style={styles.title}>Posts</Text>
+                        </View>
                         <View style={styles.contentBtn}> 
                             <Button style={styles.btnPosts} labelStyle={{ color: "#fff" }} title="Add Post" onPress={handleAddPost}>
                                 Criar posts
@@ -133,7 +144,7 @@ function RenderPosts() {
                 // Container Posts
                     <View style={styles.containerPosts}>
                         <View style={styles.contentPosts}>
-                                <Image style={styles.photoProfile} source={('./assets/profile.png')}/>
+                                <Image style={styles.photoProfile} source={{uri:'https://uxwing.com/wp-content/themes/uxwing/download/peoples-avatars/user-profile-icon.png'}}/>
                             <View style={styles.flexPosts}>
                                 <View style={styles.textsPosts}>
                                     <Text style={styles.userPosts}>{getUsers(item.userId)}</Text>
@@ -147,7 +158,7 @@ function RenderPosts() {
                             <Text style={styles.descPosts}>{item.body}</Text>
                         </View>
                         <Button style={styles.btnDeletePost} labelStyle={{ color: '#e9031e' }} onPress={() => handleDeletePost(item.id)}>
-                            Deletar post
+                            Excluir post
                         </Button>
 
                         {/* Conatainer Comments */}
@@ -190,7 +201,11 @@ function RenderPosts() {
                     <Footer />
                 )}
             />
-        </>
+            {/* Botão para voltar ao topo */}
+            <TouchableOpacity onPress={scrollToTop} style={styles.scrollToTopButton}>
+                <Text style={styles.scrollToTopButtonText}><FaLongArrowAltUp /></Text>
+            </TouchableOpacity>
+        </View>
     );
 }
 
