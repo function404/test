@@ -4,30 +4,40 @@ const styles = StyleSheet.create({
     // Header
     Header:{
         width: '100%',  
-        height: 60,
+        height: 120,
         backgroundColor: '#e90313',
         justifyContent: 'center',
         alignItems: 'center',
     },
+    imgHeader:{
+        width: 212,
+        height: 50,
+    },
     titleHeader:{
-        fontSize: 20,
+        marginTop: 10,
+        fontSize: 12,
         fontWeight: 'bold',
         fontFamily: 'Roboto, sans-serif',
         color: '#fff',
     },
-    title:{
+    contentTitle:{
         width: '95%',
+    },
+    title:{
+        width: '20%',
+        borderBottomWidth: 1,
+        textAlign: 'left',
         marginTop: 10,
         fontSize: 22,
         fontWeight: '400',
         fontFamily: 'Roboto, sans-serif',
+        // textTransform: 'capitalize',
     },
     contentBtn:{
         width: '95%',
         justifyContent: 'center',
     },
     btnPosts:{
-        position: 'left',
         width: '95%',
         margin: 10,
         backgroundColor: "#e90313",
@@ -73,6 +83,7 @@ const styles = StyleSheet.create({
         textTransform: 'uppercase',
     },
     titlePosts:{
+        width: '95%',
         marginTop: 5,
         fontSize: 14,
         fontWeight: 'bold',
@@ -84,7 +95,6 @@ const styles = StyleSheet.create({
         fontWeight: 'normal',
         fontFamily: 'Roboto, sans-serif',
         textAlign: 'justify',
-        textTransform: '',
     },
 
     // Delete Button Post
@@ -149,6 +159,21 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontFamily: 'Roboto, sans-serif',
         color: '#414141',
+    },
+
+    scrollToTopButton: {
+        position: 'absolute',
+        bottom: 20,
+        right: 20,
+        backgroundColor: '#777',
+        borderRadius: 100,
+    },
+    scrollToTopButtonText: {
+        width: '100%',
+        color: '#fff',
+        paddingVertical: 15,
+        paddingHorizontal: 17,
+        fontSize: 12,
     },
 
     // Footer 
