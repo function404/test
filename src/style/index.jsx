@@ -1,25 +1,8 @@
 import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
-    // Header
-    Header:{
-        width: '100%',  
-        height: 120,
-        backgroundColor: '#e90313',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    imgHeader:{
-        width: 212,
-        height: 50,
-    },
-    titleHeader:{
-        marginTop: 10,
-        fontSize: 12,
-        fontWeight: 'bold',
-        fontFamily: 'Roboto, sans-serif',
-        color: '#fff',
-    },
+    // Container Posts
+    
     contentTitle:{
         width: '95%',
     },
@@ -45,7 +28,6 @@ const styles = StyleSheet.create({
         borderRadius: 5,
     },
     
-    // Container Posts
     container:{
         backgroundColor: '#fff',
         alignItems: 'center',
@@ -175,24 +157,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 17,
         fontSize: 12,
     },
-
-    // Footer 
-    Footer:{
-        width: '100%',
-        height: 60,
-        backgroundColor: '#000',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    titleFooter:{
-        fontSize: 14,
-        fontWeight: 'bold',
-        fontFamily: 'Roboto, sans-serif',
-        color: '#e90313',
-    },
-    linkFooter:{
-        textDecorationLine: 'underline',
-    }
     }
 );
 
