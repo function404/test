@@ -12,7 +12,7 @@ export default function Footer() {
             <div className="Footer">
                 <p className="titleFooter"> 
                     Made with ❤ by {''}
-                    <a className="linkFooter" href='https://function404.netlify.app'> 
+                    <a className="linkFooter" href='https://function404.netlify.app' target="_blank"> 
                         Function404
                     </a> 
                 </p>
